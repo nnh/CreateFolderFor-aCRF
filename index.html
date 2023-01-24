@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+    <div class='input'>
+      <p>作成するフォルダの名前をテキストボックスに入力して登録をクリックしてください</p>
+      <input type='text' id='folderName' name='folderName'>
+    </div>
+    <div class='form-submit'>
+      <input type='button' id='exec' name='' value='登録' onclick="addBtnClick()">
+    </div>
+    <script>
+      function addBtnClick(){
+        const folderName = document.querySelector('#folderName').value;
+        if (!folderName){
+          return;
+        }
+        const execCheck = window.confirm(`${folderName}を登録します`);
+        if (!execCheck){
+          return;
+        }
+        google.script.run._createFolder(folderName);
+      }
+    </script>
+  </body>
+</html>
